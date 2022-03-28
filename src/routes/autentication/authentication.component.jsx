@@ -7,8 +7,7 @@ const Autentication = ()=>{
      
     return(
     <div className="authentication-container">
-        <h1>sign in page</h1>
-         <SignIn />
+        <SignIn />
         <SignUp />
     </div>
 )

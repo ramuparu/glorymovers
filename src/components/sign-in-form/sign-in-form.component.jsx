@@ -20,18 +20,12 @@ const SignIn = ()=>{
 
     const [formFields,setFormFields] = useState(defaultFormFields)
 
-    const [email,password] = formFields
+    const {email,password} = formFields
 
     console.log(formFields)
 
     const resetFormFields = ()=>{
         setFormFields(defaultFormFields)
-    }
-
-    const handleChange = (event)=>{
-        const {name,value} = event.target
-
-        setFormFields({...formFields,[name]:value})
     }
 
     const signInWithGoogle = async ()=>{
@@ -63,9 +57,16 @@ const SignIn = ()=>{
         }
     }
 
+    const handleChange = (event)=>{
+        const {name,value} = event.target
+
+        setFormFields({...formFields,[name]:value})
+    }
+
     return(
-        <div>
-           <h1>Sign up with your email and password</h1>
+        <div className="sign-up-container">
+        <h2>Already have an account?</h2>
+           <span>Sign up with your email and password</span>
            <form onSubmit={handleSubmit}>
               
               
@@ -79,7 +80,7 @@ const SignIn = ()=>{
                  
                    <Button type='submit'>Submit</Button>
 
-                   <Button type='button' buttonType='google' onClick={signInWithGoogle}>Sign In With Google</Button>
+                   <Button type='button' buttonType='google' onClick={signInWithGoogle}>Google sign in</Button>
                  
               </div>
               
