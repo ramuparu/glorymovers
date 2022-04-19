@@ -9,6 +9,7 @@ import Button from "../button/button.component"
 
 
 import './sign-in-form.styles.scss'
+import { useNavigate } from "react-router-dom"
 
 const defaultFormFields = {
     
@@ -24,7 +25,7 @@ const SignIn = ()=>{
 
     const {email,password} = formFields
 
-    
+    const navigate = useNavigate()
 
     const resetFormFields = ()=>{
         setFormFields(defaultFormFields)
@@ -32,7 +33,7 @@ const SignIn = ()=>{
 
     const signInWithGoogle = async ()=>{
         await signInWithGooglePopup()
-        
+        navigate('/')
     }
 
     const handleSubmit = async(event)=>{
@@ -40,6 +41,8 @@ const SignIn = ()=>{
         try{
              await SignInAuthUserWithEmailAndPassword(email,password)
              resetFormFields()
+             console.log('hi iam navigate')
+             navigate('/')
 
         }catch(err){
             switch(err.code){
